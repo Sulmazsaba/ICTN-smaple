@@ -1,0 +1,42 @@
+.container{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  direction: rtl;
+  align-items: center;
+}
+
+.form-inline h6{
+  width: 100%;
+  margin: auto;
+  text-align: right;
+  padding: 2%;
+}
+.form-inline label{
+  margin: 5px 10px 5px 0;
+  display: inline-block;
+  float: right;
+}
+
+.form-inline input{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button{
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.footer{
+  width: 100%;
+}
