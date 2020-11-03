@@ -40,3 +40,12 @@
 .footer{
   width: 100%;
 }
+
+.validation-message-hidden {
+  display: none;
+}
+
+.validation-message-show{
+display: block;
+  position: relative;
+}
