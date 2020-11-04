@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {PersonTypeModel} from './person-type.model';
+import {RegistrationNoValidators} from '../common/validators/registration-no-validators';
 
 @Component({
   selector: 'app-main-form',
@@ -22,7 +23,10 @@ export class MainFormComponent implements OnInit {
       companyType: new FormControl(),
       companyName : new FormControl(),
       registrationNo: new FormControl('',
-        Validators.pattern('^[0-9]*$')),
+        [
+          Validators.pattern('^[0-9]*$'),
+          RegistrationNoValidators.shouldBeUnique
+        ]),
       registrationDate: new FormControl(),
       personType: new FormControl(),
       email: new FormControl('', Validators.email ),

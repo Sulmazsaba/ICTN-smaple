@@ -64,8 +64,7 @@
              type="email"
              class="form-control">
       <div [ngClass]="{'alert alert-danger validation-message-show':
-       form.get('email').invalid &&
-       form.get('email').touched
+       form.get('email').invalid &&  form.get('email').touched
        }" class="validation-message-hidden">فرمت ایمیل وارد شده صحیح نمی باشد</div>
     </div>
     <div class="form-group">

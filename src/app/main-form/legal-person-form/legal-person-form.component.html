@@ -20,13 +20,11 @@
       <label for="registrationNo">شماره ثبت</label>
       <input id="registrationNo"
              formControlName="registrationNo"
-             type="number"
+             type="text"
              class="form-control">
       <div [ngClass]="{ 'alert alert-danger validation-message-show' :
-           form.get('registrationNo').touched &&
-           form.get('registrationNo').invalid }"
-           class="validation-message-hidden" >
-        <div *ngIf="form.get('registrationNo').errors?.pattern">فقط عدد وارد نمائید.</div>
+           form.get('registrationNo').touched && form.get('registrationNo').invalid }"
+           class="validation-message-hidden" > فرمت وارد شده صحیح نمی باشد.
       </div>
     </div>
     <div class="form-group">
