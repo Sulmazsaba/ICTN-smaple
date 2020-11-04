@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PersonTypeModel} from './person-type.model';
 
 @Component({
   selector: 'app-main-form',
@@ -8,6 +9,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class MainFormComponent implements OnInit {
   form: FormGroup;
+  personType: PersonTypeModel = PersonTypeModel.legal;
   constructor() {
     this.createForm();
   }
@@ -17,32 +19,48 @@ export class MainFormComponent implements OnInit {
 
   private createForm() {
     this.form = new FormGroup({
-      personType: new FormControl(),
-      companyName : new FormControl('',
-        [Validators.required,
-          Validators.maxLength(10)]),
       companyType: new FormControl(),
+      companyName : new FormControl(),
       registrationNo: new FormControl('',
-        [Validators.pattern('^[0-9]*$'),
-        Validators.maxLength(10),
-          Validators.minLength(10)
-        ]),
-      registrationDate: new FormControl(),
-      email: new FormControl('',
-        [Validators.email,
-        Validators.maxLength(50)]
-        ),
-      postalCode: new FormControl('',
-        [Validators.maxLength(11),
-        Validators.pattern('^[0-9]*$')
-        ]) ,
-      phoneNo: new FormControl('',
         Validators.pattern('^[0-9]*$')),
-      address: new FormControl('',
-        Validators.maxLength(400)
-        ),
-      firstMobileNo: new FormControl(),
-      secondMobileNo: new FormControl()
+      registrationDate: new FormControl(),
+      personType: new FormControl(),
+      email: new FormControl('', Validators.email ),
+      postalCode: new FormControl('', {
+        validators: [
+          Validators.maxLength(10),
+          Validators.minLength(10)]}
+        ) ,
+      phoneNo: new FormControl(),
+      address: new FormControl(),
+      firstMobileNo: new FormControl('', {
+        validators: [
+          Validators.pattern('^(0)9[01239]\\d{8}$'),
+        ]
+      }),
+      secondMobileNo: new FormControl('', {
+        validators: [
+          Validators.pattern('^(0)9[01239]\\d{8}$'),
+        ]
+      })
     });
   }
+
+  changePersonType(id: string) {
+    if (id === 'legal') {
+    this.personType = PersonTypeModel.legal;
+    } else if (id === 'real') {
+      this.personType = PersonTypeModel.real;
+    }
+  }
+
+  get PersonTypeModel() {
+    return  PersonTypeModel;
+  }
+
+  get postalCode() {
+    return this.form.get('postalCode');
+  }
+
+
 }

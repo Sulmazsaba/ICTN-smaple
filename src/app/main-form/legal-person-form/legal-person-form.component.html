@@ -1,0 +1,39 @@
+<div [formGroup]="form" class="form-inline">
+    <h6>اطلاعات حقوقی</h6>
+    <div class="form-group">
+      <label for="companyName">نام شرکت</label>
+      <input id="companyName"
+             formControlName="companyName"
+             type="text"
+             class="form-control"
+             placeholder="نام شرکت را وارد نمائید.">
+    </div>
+    <div class="form-group">
+      <label for="companyType">نوع شرکت</label>
+      <input
+        id="companyType"
+        formControlName="companyType"
+        type="text"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="registrationNo">شماره ثبت</label>
+      <input id="registrationNo"
+             formControlName="registrationNo"
+             type="number"
+             class="form-control">
+      <div [ngClass]="{ 'alert alert-danger validation-message-show' :
+           form.get('registrationNo').touched &&
+           form.get('registrationNo').invalid }"
+           class="validation-message-hidden" >
+        <div *ngIf="form.get('registrationNo').errors?.pattern">فقط عدد وارد نمائید.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="registrationDate">تاریخ ثبت</label>
+      <input id="registrationDate"
+             formControlName="registrationDate"
+             type="text"
+             class="form-control">
+    </div>
+</div>
